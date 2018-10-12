@@ -7,9 +7,9 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 @Configuration
-@PropertySource(value = {"classpath:properties/env/database.properties", "classpath:properties/env/system.properties"})
+@PropertySource(value = {"classpath:properties/env/database-${spring.profiles.active}.properties",
+        "classpath:properties/env/system-${spring.profiles.active}.properties"})
 public class ResourceConfig {
-
     /**
      * @PropertySource 를 사용해서 프로퍼티 파일을 로드하려면 선언해야함.
      * @return

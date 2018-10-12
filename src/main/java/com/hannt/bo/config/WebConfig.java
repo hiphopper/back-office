@@ -20,7 +20,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         classes = {Controller.class, RestController.class}
     ),
     excludeFilters = @ComponentScan.Filter(
-        classes = {Service.class, Repository.class}
+        type = FilterType.ASPECTJ,
+        pattern = {"com.hannt.bo..service.*+", "com.hannt.bo..repository.*+"}
+            //classes = {Service.class, Repository.class}
     )
 )
 public class WebConfig implements WebMvcConfigurer {

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleRestController {
     @Autowired
     private SampleService sampleService;
-    @Autowired
-    private CacheManager cacheManager;
 
     @GetMapping
     public String getString(){
@@ -39,7 +37,6 @@ public class SampleRestController {
 
     @GetMapping("/cache")
     public String cache(){
-        System.out.println(cacheManager.getCache("codeCache"));
         return sampleService.getCache();
     }
 }

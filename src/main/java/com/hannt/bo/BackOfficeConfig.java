@@ -1,7 +1,7 @@
 package com.hannt.bo;
 
 import com.hannt.bo.config.WebConfig;
-import com.hannt.core.RootConfig;
+import com.hannt.core.CoreConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @Configuration
-@Import(RootConfig.class)
+@Import(CoreConfig.class)
 @ComponentScan(
     excludeFilters = {@ComponentScan.Filter(
         type = FilterType.ANNOTATION,

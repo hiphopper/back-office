@@ -6,30 +6,25 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
 @Configuration
 public class BackOfficePersistenceConfig {
+    @Value("${database.url}") String url;
+    @Value("${database.username}") String username;
+    @Value("${database.password}") String password;
+    @Value("${database.driverClassName}") String driverClassName;
 
     @Bean("dataSource")
     @Profile("local")
-    public DataSource localDataSource(
-            @Value("${database.local.url}") String url,
-            @Value("${database.local.username}") String username,
-            @Value("${database.local.password}") String password,
-            @Value("${database.driverClassName}") String driverClassName
-    ){
+    public DataSource localDataSource(){
         return dataSource(url, username, password, driverClassName);
     }
 
     @Bean("dataSource")
     @Profile("dev")
-    public DataSource devDataSource(
-            @Value("${database.dev.url}") String url,
-            @Value("${database.dev.username}") String username,
-            @Value("${database.dev.password}") String password,
-            @Value("${database.driverClassName}") String driverClassName
-    ){
+    public DataSource devDataSource(){
         return dataSource(url, username, password, driverClassName);
     }
 
